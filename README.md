@@ -27,3 +27,7 @@ java -jar $LOCATION -Dlanguage=Cpp -listener -visitor -Xexact-output-dir -o gen/
 ``` bash
 pip install antlr4-python3-runtime==4.13.0
 ```
+
+### References
+
+1. [antlr4 python示例](https://github.com/antlr/antlr4/blob/master/doc/python-target.md)
