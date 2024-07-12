@@ -35,7 +35,7 @@ def load_tree(ins, is_file=False):
     return parser.document()
 
 
-def urdf2g(input, file_out=None, is_file=False, stdout=True):
+def urdf2g(input, file_out=None, is_file=False, stdout=True, img_format='png'):
     lines = ""
     tree = load_tree(input, is_file)
     visitor = XMLVisitor()
@@ -58,12 +58,11 @@ def urdf2g(input, file_out=None, is_file=False, stdout=True):
     if stdout:
         print(lines)
 
-    if file_out:
-        with open(file_out, 'w') as fw:
-            fw.writelines(lines)
+    # if file_out:
+    #     with open(file_out, 'w') as fw:
+    #         fw.writelines(lines)
 
     if stdout:
         dot = graphviz.Source(lines)
-        dot.render('output', format='svg')
-
+        dot.render(file_out, format=img_format)
 

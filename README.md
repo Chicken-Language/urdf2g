@@ -21,13 +21,20 @@ LOCATION=antlr-4.13.0-complete.jar
 # -Xexact-output-dir for issue(https://github.com/antlr/antlr4/issues/638 and https://github.com/antlr/antlr4/pull/2065)
 java -jar $LOCATION -Dlanguage=Cpp -listener -visitor -Xexact-output-dir -o gen/dot/ resource/dot/DOT.g4
 ```
-3. 安装 graphviz 
+3. 安装 graphviz
+``` 
+sudo apt install graphviz
+```
 
 ### Dependencies
 解析完语法文件，在编写以及运行代码时，需要依赖 ANTLR4 运行时环境（具体可查看[文档](https://github.com/antlr/antlr4/blob/master/doc/python-target.md)）：
 ``` bash
 pip install antlr4-python3-runtime==4.13.0
+pip install graphviz==0.20.3
 ```
+
+可以查看 `test/test.xml` 文件转为 dot 的效果，下图为输出
+![](./img/stdout.gv.png)
 
 ### References
 
