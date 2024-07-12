@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-import re
-import antlr4
-
-from gen.xml.XMLLexer import XMLLexer
-from gen.xml.XMLParser import XMLParser
-
-from src.XMLVisitor import XMLVisitor
-
-
-urdf = """
-<?xml version="1.0"?>
 <robot name="simple_robot">
 
   <!-- Define the base link -->
@@ -70,23 +58,3 @@ urdf = """
   </joint>
 
 </robot>
-"""
-
-# extraneous input '<?xml ' expecting {COMMENT, SEA_WS, '<', PI}
-urdf = re.sub(r"<\?xml.*>", "", urdf)
-
-
-intput = antlr4.InputStream(urdf)
-lexer = XMLLexer(intput)
-tokens = antlr4.CommonTokenStream(lexer)
-parser = XMLParser(tokens)
-tree = parser.document()
-
-if parser.getNumberOfSyntaxErrors() > 0:
-        print("syntax errors")
-
-go = XMLVisitor()
-go.visit(tree)
-
-print(go.graph.nodes)
-print(go.graph.edges)

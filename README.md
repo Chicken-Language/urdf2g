@@ -5,7 +5,7 @@
 
 parser Unified Robot Description Format with Antlr
 
-最近参加了一个公司的ROS培训，看到了 check_urdf 和 urdf_to_graphiz 这两个命令，一瞬间就想到了 Antlr 解析。找了下 ROS 库里的源码——[urdfdom](https://github.com/ros/urdfdom)，看到里面用到是 CPP 写的，闲着没事用 Antlr 实现下，巩固下学到的 Antlr。
+最近参加了一个公司的ROS培训，看到了 check_urdf 和 urdf_to_graphiz 这两个命令，一瞬间就想到了 Antlr 解析。找了下 ROS 库里的源码——[urdfdom](https://github.com/ros/urdfdom)，看到里面用到是 CPP 写的，闲着没事用 Antlr 实现下（当然有点杀鸡用牛刀的意思了），巩固下学到的 Antlr。
 
 ## Install and Dependencies
 
@@ -21,6 +21,7 @@ LOCATION=antlr-4.13.0-complete.jar
 # -Xexact-output-dir for issue(https://github.com/antlr/antlr4/issues/638 and https://github.com/antlr/antlr4/pull/2065)
 java -jar $LOCATION -Dlanguage=Cpp -listener -visitor -Xexact-output-dir -o gen/dot/ resource/dot/DOT.g4
 ```
+3. 安装 graphviz 
 
 ### Dependencies
 解析完语法文件，在编写以及运行代码时，需要依赖 ANTLR4 运行时环境（具体可查看[文档](https://github.com/antlr/antlr4/blob/master/doc/python-target.md)）：
@@ -31,3 +32,4 @@ pip install antlr4-python3-runtime==4.13.0
 ### References
 
 1. [antlr4 python示例](https://github.com/antlr/antlr4/blob/master/doc/python-target.md)
+2. https://graphviz.readthedocs.io/en/stable/manual.html#installation
